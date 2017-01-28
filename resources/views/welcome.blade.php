@@ -16,7 +16,9 @@
                 initialState: {
                     categories: {
                         categories: {!! $categories !!}
-                    }
+                    },
+
+                    posts: {}
                 }
             }
         </script>

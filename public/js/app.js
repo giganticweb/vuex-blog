@@ -10449,9 +10449,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_posts__ = __webpack_require__(29);
 
 
-var state = {
-    posts: []
-};
+var state = vuexBlog.initialState.posts;
 
 var getters = {
     posts: function posts(state) {

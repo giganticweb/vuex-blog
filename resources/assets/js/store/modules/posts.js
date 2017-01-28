@@ -1,8 +1,6 @@
 import posts from '../../api/posts'
 
-const state = {
-    posts: []
-}
+const state = vuexBlog.initialState.posts
 
 const getters = {
     posts: state => state.posts
