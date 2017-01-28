@@ -1,8 +1,9 @@
 <?php
 
+use App\Category;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class CategoriesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +12,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(CategoriesTableSeeder::class);
-        $this->call(PostsTableSeeder::class);
+        Category::truncate();
+
+        factory(Category::class, 5)->create();
     }
 }

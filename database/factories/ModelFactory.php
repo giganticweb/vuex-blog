@@ -11,7 +11,22 @@
 |
 */
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Category::class, function(Faker\Generator $faker) {
+    return [
+        'name' => ucfirst(implode(' ', $faker->words(2))),
+    ];
+});
+
+$factory->define(App\Post::class, function(Faker\Generator $faker) {
+    return [
+        'author_id' => 1,
+        'category_id' => mt_rand(1, 5),
+        'title' => $faker->sentence(3),
+        'excerpt' => $faker->sentence,
+        'body' => $faker->paragraph
+    ];
+});
+
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
 
