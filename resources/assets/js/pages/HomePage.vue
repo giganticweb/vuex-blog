@@ -1,5 +1,5 @@
 <template>
     <div>
-        home page route
+        <category-filter></category-filter>
     </div>
 </template>

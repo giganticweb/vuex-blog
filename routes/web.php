@@ -12,5 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $categories = collect([['name' => 'Web development'], ['name' => 'Web design']])->toJson();
+
+    return view('welcome', compact('categories'));
 });

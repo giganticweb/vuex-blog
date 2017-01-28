@@ -1,11 +1,11 @@
 import posts from '../../api/posts'
 
 const state = {
-    allPosts: []
+    posts: []
 }
 
 const getters = {
-    allPosts: state => state.allPosts
+    posts: state => state.posts
 }
 
 const actions = {
@@ -16,7 +16,7 @@ const actions = {
 
 const mutations = {
     receivePosts (state, { posts }) {
-        state.allPosts = posts
+        state.posts = posts
     }
 }
 

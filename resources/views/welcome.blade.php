@@ -11,6 +11,16 @@
             <router-view></router-view>
         </div>
 
+        <script>
+            window.vuexBlog = {
+                initialState: {
+                    categories: {
+                        categories: {!! $categories !!}
+                    }
+                }
+            }
+        </script>
+
         <script src="/js/app.js"></script>
     </body>
 </html>

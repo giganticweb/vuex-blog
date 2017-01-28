@@ -9518,6 +9518,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__router__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_CategoryFilter__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_CategoryFilter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_CategoryFilter__);
 
 
 
@@ -9525,6 +9527,9 @@ __WEBPACK_IMPORTED_MODULE_1_axios___default.a.defaults.headers.common = { 'X-Req
 
 
 
+
+
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('category-filter', __WEBPACK_IMPORTED_MODULE_4__components_CategoryFilter___default.a);
 
 new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     router: __WEBPACK_IMPORTED_MODULE_3__router__["a" /* default */],
@@ -10423,6 +10428,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vuex__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_posts__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_categories__ = __webpack_require__(49);
 
 
 
@@ -10430,8 +10436,9 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 
 
 
+
 /* harmony default export */ __webpack_exports__["a"] = new __WEBPACK_IMPORTED_MODULE_1_vuex___default.a.Store({
-    modules: { posts: __WEBPACK_IMPORTED_MODULE_2__modules_posts__["a" /* default */] }
+    modules: { posts: __WEBPACK_IMPORTED_MODULE_2__modules_posts__["a" /* default */], categories: __WEBPACK_IMPORTED_MODULE_3__modules_categories__["a" /* default */] }
 });
 
 /***/ }),
@@ -10443,12 +10450,12 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 
 
 var state = {
-    allPosts: []
+    posts: []
 };
 
 var getters = {
-    allPosts: function allPosts(state) {
-        return state.allPosts;
+    posts: function posts(state) {
+        return state.posts;
     }
 };
 
@@ -10466,7 +10473,7 @@ var mutations = {
     receivePosts: function receivePosts(state, _ref2) {
         var posts = _ref2.posts;
 
-        state.allPosts = posts;
+        state.posts = posts;
     }
 };
 
@@ -10564,7 +10571,7 @@ module.exports = function normalizeComponent (
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_vm._v("\n    home page route\n")])
+  return _c('div', [_c('category-filter')], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -13661,6 +13668,122 @@ module.exports = g;
 __webpack_require__(10);
 module.exports = __webpack_require__(11);
 
+
+/***/ }),
+/* 40 */,
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+
+
+/* unused harmony default export */ var _unused_webpack_default_export = {};
+
+/***/ }),
+/* 49 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_categories__ = __webpack_require__(48);
+
+
+var state = vuexBlog.initialState.categories;
+
+var getters = {
+    categories: function categories(state) {
+        return state.categories;
+    }
+};
+
+var actions = {};
+var mutations = {};
+
+/* harmony default export */ __webpack_exports__["a"] = { state: state, getters: getters, actions: actions, mutations: mutations };
+
+/***/ }),
+/* 50 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = {
+    computed: {
+        categories: function categories() {
+            return this.$store.getters.categories;
+        }
+    }
+};
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(34)(
+  /* script */
+  __webpack_require__(50),
+  /* template */
+  __webpack_require__(52),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/TerryHarvey/Documents/Projects/vuex-blog/resources/assets/js/components/CategoryFilter.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] CategoryFilter.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-8d37272e", Component.options)
+  } else {
+    hotAPI.reload("data-v-8d37272e", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('ul', _vm._l((_vm.categories), function(category) {
+    return _c('li', [_vm._v("\n            " + _vm._s(category.name) + "\n        ")])
+  }))])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-8d37272e", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
