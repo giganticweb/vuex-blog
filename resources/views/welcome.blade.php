@@ -18,7 +18,9 @@
                         categories: {!! $categories !!}
                     },
 
-                    posts: {}
+                    posts: {
+                        posts: {!! $posts !!}
+                    }
                 }
             }
         </script>

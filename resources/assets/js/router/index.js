@@ -9,6 +9,6 @@ export default new Router({
     mode: 'history',
     scrollBehavior: () => ({ y: 0 }),
     routes: [
-        { path: '/', component: HomePage },
+        { path: '/', component: HomePage }
     ]
 })
