@@ -9,7 +9,9 @@
     export default {
         computed: {
             posts () {
-                return this.$store.getters.posts
+                const id = this.$route.params.id
+
+                return this.$store.getters.postsInCategory(id)
             }
         }
     }

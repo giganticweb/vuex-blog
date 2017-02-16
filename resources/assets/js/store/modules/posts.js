@@ -3,7 +3,11 @@ import posts from '../../api/posts'
 const state = vuexBlog.initialState.posts
 
 const getters = {
-    posts: state => state.posts
+    posts: state => state.posts,
+
+    postsInCategory: state => (categoryId) => {
+        return state.posts.filter(post => post.category_id == categoryId)
+    }
 }
 
 const actions = {
