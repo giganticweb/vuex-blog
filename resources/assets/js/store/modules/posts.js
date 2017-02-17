@@ -1,6 +1,10 @@
 import posts from '../../api/posts'
 
-const state = vuexBlog.initialState.posts
+const state = {
+    posts: vuexBlog.initialState.posts,
+    isFetching: false,
+    hasFetched: false
+}
 
 const getters = {
     posts: state => state.posts,
@@ -16,13 +20,21 @@ const getters = {
 
 const actions = {
     fetchPosts ({ commit }) {
+        commit('startFetchingPosts')
+
         posts.fetch().then(resp => commit('receivePosts', { posts: resp.data }))
     }
 }
 
 const mutations = {
+    startFetchingPosts (state) {
+        state.isFetching = true
+    },
+
     receivePosts (state, { posts }) {
         state.posts = posts
+        state.hasFetched = true
+        state.isFetching = false
     }
 }
 

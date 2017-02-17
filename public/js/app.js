@@ -10455,7 +10455,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = {
     computed: {
         categories: function categories() {
-            return this.$store.getters.categories;
+            return this.$store.state.categories.categories;
         }
     }
 };
@@ -10498,13 +10498,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = {
+    mounted: function mounted() {
+        this.fetchPosts();
+    },
+
+
+    methods: {
+        fetchPosts: function fetchPosts() {
+            this.$store.dispatch('fetchPosts');
+        }
+    },
+
     computed: {
         posts: function posts() {
             var id = this.$route.params.id;
 
             return this.$store.getters.postsInCategory(id);
+        },
+        isFetching: function isFetching() {
+            return this.$store.state.posts.isFetching;
+        },
+        hasFetched: function hasFetched() {
+            return this.$store.state.posts.hasFetched;
+        }
+    },
+
+    watch: {
+        '$route': function $route() {
+            this.fetchPosts();
         }
     }
 };
@@ -10568,7 +10594,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 
 
-/* unused harmony default export */ var _unused_webpack_default_export = {};
+/* unused harmony default export */ var _unused_webpack_default_export = {
+    fetch: function fetch() {
+        return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/categories');
+    }
+};
 
 /***/ }),
 /* 36 */
@@ -10648,15 +10678,14 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_categories__ = __webpack_require__(35);
 
 
-var state = vuexBlog.initialState.categories;
-
-var getters = {
-    categories: function categories(state) {
-        return state.categories;
-    }
+var state = {
+    categories: vuexBlog.initialState.categories
 };
 
+var getters = {};
+
 var actions = {};
+
 var mutations = {};
 
 /* harmony default export */ __webpack_exports__["a"] = { state: state, getters: getters, actions: actions, mutations: mutations };
@@ -10669,7 +10698,11 @@ var mutations = {};
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_posts__ = __webpack_require__(36);
 
 
-var state = vuexBlog.initialState.posts;
+var state = {
+    posts: vuexBlog.initialState.posts,
+    isFetching: false,
+    hasFetched: false
+};
 
 var getters = {
     posts: function posts(state) {
@@ -10697,6 +10730,8 @@ var actions = {
     fetchPosts: function fetchPosts(_ref) {
         var commit = _ref.commit;
 
+        commit('startFetchingPosts');
+
         __WEBPACK_IMPORTED_MODULE_0__api_posts__["a" /* default */].fetch().then(function (resp) {
             return commit('receivePosts', { posts: resp.data });
         });
@@ -10704,10 +10739,15 @@ var actions = {
 };
 
 var mutations = {
+    startFetchingPosts: function startFetchingPosts(state) {
+        state.isFetching = true;
+    },
     receivePosts: function receivePosts(state, _ref2) {
         var posts = _ref2.posts;
 
         state.posts = posts;
+        state.hasFetched = true;
+        state.isFetching = false;
     }
 };
 
@@ -10888,11 +10928,11 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('category-list'), _vm._v(" "), _c('post-list', {
+  return _c('div', [_c('category-list'), _vm._v(" "), (_vm.isFetching) ? _c('div', [_vm._v("Loading...")]) : _vm._e(), _vm._v(" "), (_vm.hasFetched) ? _c('post-list', {
     attrs: {
       "posts": _vm.posts
     }
-  })], 1)
+  }) : _vm._e()], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

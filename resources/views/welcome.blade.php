@@ -14,13 +14,8 @@
         <script>
             window.vuexBlog = {
                 initialState: {
-                    categories: {
-                        categories: {!! $categories !!}
-                    },
-
-                    posts: {
-                        posts: {!! $posts !!}
-                    }
+                    categories: {!! $categories !!},
+                    posts: {!! $posts !!}
                 }
             }
         </script>

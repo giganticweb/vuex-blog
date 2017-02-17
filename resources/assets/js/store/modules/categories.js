@@ -1,12 +1,13 @@
 import categories from '../../api/categories'
 
-const state = vuexBlog.initialState.categories
-
-const getters = {
-    categories: state => state.categories
+const state = {
+    categories: vuexBlog.initialState.categories
 }
 
-const actions = {}
+const getters = {}
+
+const actions = { }
+
 const mutations = {}
 
 export default { state, getters, actions, mutations }

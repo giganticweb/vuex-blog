@@ -12,7 +12,7 @@
     export default {
         computed: {
             categories () {
-                return this.$store.getters.categories
+                return this.$store.state.categories.categories
             }
         }
     }
