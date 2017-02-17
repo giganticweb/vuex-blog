@@ -7,6 +7,10 @@ const getters = {
 
     postsInCategory: state => (categoryId) => {
         return state.posts.filter(post => post.category_id == categoryId)
+    },
+
+    postFromId: state => (postId) => {
+        return state.posts.find(post => post.id == postId)
     }
 }
 
